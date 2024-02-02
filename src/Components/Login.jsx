@@ -11,98 +11,82 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    //   const navigate = useNavigate();
-    //   const location = useLocation();
 
     // handle form
-    //   const onSubmit = (data) => {
-    //     // login user
-    //     loginUser(data.email, data.password)
-    //       .then((result) => {
-    //         if (result.user) {
-    //           navigate(location.state ? location.state : "/");
-    //           toast.success("Logged in successfully.", {
-    //             style: {
-    //               background: "#000000",
-    //               padding: "12px",
-    //               color: "#FFFAEE",
-    //             },
-    //           });
-    //         }
-    //       })
-    //       .catch(() => {
-    //         toast.error("Invalid email or wrong password", {
-    //           style: {
-    //             background: "#000000",
-    //             padding: "12px",
-    //             color: "#FFFAEE",
-    //           },
-    //         });
-    //       });
-    //   };
+    const onSubmit = (data) => {
+        console.log(data);
+        // login user
+        // toast.error("Invalid email or wrong password", {
+        //     style: {
+        //         background: "#000000",
+        //         padding: "12px",
+        //         color: "#FFFAEE",
+        //     },
+        // });
+    };
 
     return (
-        <div className="container mt-5 d-flex justify-content-center align-items-center ">
+        <div className="container mt-3 d-flex justify-content-center align-items-center ">
             <Helmet>
                 <title>ChainTeck | Sign In</title>
             </Helmet>
-            <div className="border bg-form rounded w-fit p-4 ">
-                <h3 className="">
-                    Sign In to your account
+            <div className="bg-form rounded w-fit p-5 ">
+                <h3 className="text-center mb-3 ">
+                    Sign In to Your Account
                 </h3>
-                <form onSubmit={handleSubmit()}>
+                <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column row-gap-3 ">
                     {/* Email Field */}
-                    <div className="">
-                        <label htmlFor="email">Your email</label>
+                    <div className="d-flex flex-column">
+                        <label htmlFor="email" className="text-white">Your email</label>
                         <input
                             {...register("email", { required: true })}
                             type="email"
                             placeholder="Enter your email"
-                            className=""
+                            className="p-2 outline-none rounded border-0 "
                             id="email"
                         />
                         {errors.email && (
-                            <span className="">Your email is required*</span>
+                            <span className="text-danger">Your email is required*</span>
                         )}
                     </div>
                     {/* Password Field */}
-                    <div className="relative flex flex-col space-y-2">
-                        <label htmlFor="password">Your password</label>
+                    <div className="d-flex flex-column position-relative ">
+                        <label htmlFor="password" className="text-white">Your password</label>
                         <input
                             {...register("password", { required: true, minLength: 6 })}
                             type={showPass ? "password" : "text"}
                             placeholder="Enter your password"
-                            className=""
+                            className="p-2 outline-none rounded border-0 "
                             id="password"
                         />
                         {errors.password && (
-                            <span className="">
+                            <span className="text-danger">
                                 Password must have at least 6 character*
                             </span>
                         )}
                         {/* Show Password */}
                         <span
                             onClick={() => setShowPass(!showPass)}
-                            className=""
+                            className="eye_icon fs-4"
                         >
                             {showPass ? <IoEye /> : <IoEyeOff />}
                         </span>
-                        <a className="" href="#">
+                        <a className="text-white d-block text-end" href="#">
                             <small>Forgot Password?</small>
                         </a>
                     </div>
                     {/* Sign In button */}
                     <button
                         type="submit"
-                        className=""
+                        className="d-inline-block py-2 px-4 rounded fw-bold nav_item "
                     >
                         Sign In
                     </button>
                 </form>
                 {/* Redirect to Register page */}
-                <p className="text-center mt-6">
-                    New to UniFood?{" "}
-                    <Link to={"/signup"} className="">
+                <p className="text-center mt-3 text-white ">
+                    New here?{" "}
+                    <Link to={"/signup"} className="text-purple">
                         Register Now
                     </Link>
                 </p>

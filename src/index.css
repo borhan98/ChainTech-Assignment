@@ -1,0 +1,23 @@
+.root_bg {
+    background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+    min-height: 100vh;
+}
+.nav_border {
+    border-bottom: 1px solid purple;
+}
+.nav_item {
+    border: 1px solid purple;
+    color: purple;
+    transition: all 0.3s ease;
+}
+.nav_item:hover {
+    background: purple;
+    color: white;
+}
+.w-fit {
+    width: fit-content;
+}
+.bg-form {
+    background: #0000005f;
+    color: white;
+}
